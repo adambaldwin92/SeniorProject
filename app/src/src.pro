@@ -1,21 +1,30 @@
 CONFIG -= qt
 CONFIG += qt
 
-QT  += network core concurrent
+QT  += network core concurrent widgets
 
 CONFIG += console
 CONFIG -= app_bundle
 
-TEMPLATE = app
-
 TARGET = app
+TEMPLATE = lib
 
-SOURCES += main.cpp \
-    power.cpp
+DEFINES += SRC_LIBRARY
+
+SOURCES += \
+    power.cpp \
+    thread.cpp
 
 HEADERS += \
+    src_global.h \
     power.h \
     pump.h \
     client.h \
     server.h \
-    thread.h
+    thread.h \
+    src_global.h
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}

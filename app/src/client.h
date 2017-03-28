@@ -15,10 +15,13 @@ public:
     explicit Client(QWidget *parent = Q_NULLPTR);
 
 private slots:
-    void requestNewData();
-    void readData();
-    void displayError(QAbstractSocket::SocketError socketError);
-    void sessionOpened();
+    /* TODO: the below (virtual?) methods are experiencing
+     *  issue: LNK2019: unresolved external symbol
+     */
+//    void requestNewData();
+//    void readData();
+//    void displayError(QAbstractSocket::SocketError socketError);
+//    void sessionOpened();
 
 private:
     QTcpSocket *tcpSocket;

@@ -1,6 +1,8 @@
 TEMPLATE = subdirs
 
-SUBDIRS += src
+SUBDIRS += src \
+    Monitor
+
 
 CONFIG(debug, debug|release) {
     SUBDIRS += tests

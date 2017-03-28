@@ -12,7 +12,7 @@ public:
     Server(QObject *parent = 0);
 
 protected:
-    void incomingConnection(qintptr socketDesrcriptor) override;
+//    void incomingConnection(qintptr socketDesrcriptor) override;
 
 private:
     QQueue<int> data;

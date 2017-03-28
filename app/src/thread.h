@@ -10,7 +10,7 @@ class Thread : public QThread
     Q_OBJECT
 
 public:
-    Thread(int socketDescriptor, const int &datum, QObject *parent = 0);
+    Thread(int socketDescriptor, const int &datum, QObject *parent);
 
     void run() override;
 
@@ -19,7 +19,7 @@ signals:
 
 private:
     int socketDescriptor;
-    int datum;
+    int value;
 };
 
 #endif // THREAD_H
