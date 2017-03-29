@@ -7,8 +7,8 @@ isEmpty(GOOGLETEST_DIR) {
 }
 
 !isEmpty(GOOGLETEST_DIR): {
-    GTEST_SRCDIR = $$GOOGLETEST_DIR/googletest
-    GMOCK_SRCDIR = $$GOOGLETEST_DIR/googlemock
+    GTEST_SRCDIR = $$GOOGLETEST_DIR/gtest
+    GMOCK_SRCDIR = $$GOOGLETEST_DIR/gmock
 }
 
 requires(exists($$GTEST_SRCDIR):exists($$GMOCK_SRCDIR))
