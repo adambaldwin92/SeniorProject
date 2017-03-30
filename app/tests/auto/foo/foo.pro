@@ -10,7 +10,6 @@ CONFIG -= qt
 QT += widgets
 
 HEADERS +=     tst_foo.h \
-    tst_power.h \
-    tst_pump.h
+    tst_power.h
 
 SOURCES +=     main.cpp

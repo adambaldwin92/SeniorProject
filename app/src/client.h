@@ -7,7 +7,7 @@
 #include <QNetworkSession>
 #include <QtWidgets/QDialog>
 
-class Client : public QDialog
+class Client
 {
     Q_OBJECT
 

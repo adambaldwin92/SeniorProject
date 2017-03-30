@@ -21,12 +21,12 @@ SOURCES += \
 HEADERS += \
     src_global.h \
     power.h \
-    pump.h \
-    client.h \
     server.h \
     thread.h \
     src_global.h \
-    camera.h
+    camera.h \
+    client.h \
+    interfaces.h
 
 unix {
     target.path = /usr/lib
