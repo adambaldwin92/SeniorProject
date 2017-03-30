@@ -8,10 +8,10 @@ Camera::Camera()
 {
     retrieveCameraNames();
 //    camera = new QCamera(QCameraInfo::defaultCamera());
-//    imageCapture = new QCameraImageCapture(camera);
+    imageCapture = new QCameraImageCapture(camera);
 
-//    camera->setCaptureMode(QCamera::CaptureStillImage);
-//    camera->start();
+    camera->setCaptureMode(QCamera::CaptureStillImage);
+    camera->start();
 }
 
 
@@ -30,6 +30,7 @@ int Camera::retrieveCameraNames()
         while (fgets(buf, BUFSIZE, fp) != NULL) {
             // Do whatever you want here...
             // TODO: store OUTPUT as list of strings || as QStringList
+            camera = new QCamera(buf);
             qDebug() << "OUTPUT: " << buf;
         }
 
@@ -37,6 +38,7 @@ int Camera::retrieveCameraNames()
             qDebug() << "Command not found or exited with error status\n";
             return -1;
         }
+//        string cam = "HP Truevision HD";
 
         return 0;
 }
