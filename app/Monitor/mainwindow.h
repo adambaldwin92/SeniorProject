@@ -5,6 +5,8 @@
 #include <QCamera>
 #include <QCameraImageCapture>
 
+#include "camera.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -21,8 +23,8 @@ public:
 private:
     Ui::MainWindow *ui;
 
-//    Camera *camera;
-    QCamera *camera;
+    Camera *camera;
+//    QCamera *camera;
     QCameraImageCapture *imageCapture;
 };
 

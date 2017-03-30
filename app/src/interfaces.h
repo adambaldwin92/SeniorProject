@@ -3,13 +3,17 @@
 
 #include <QtPlugin>
 
-/* List classes that are used i.e. :
- * QT_BEGIN_NAMESPACE
- *  class QImage;
- *  class QPainter;
- *  class QWidget;
- * QT_END_NAMESPACE
- */
+
+QT_BEGIN_NAMESPACE
+ class QObject;
+ class QWidget;
+ class QThread;
+ class QCameraInfo;
+ class QCamera;
+ class QCameraImageCapture;
+ class QAbstractSocket::SocketError;
+QT_END_NAMESPACE
+
 
 class ClientInterface
 {
@@ -17,7 +21,17 @@ public:
     virtual ~ClientInterface() {}
 
     virtual void someAbstractMethod() = 0;
+
+private slots:
+    virtual void requestNewData() = 0;
+    virtual void readData() = 0;
+    virtual void displayError(QAbstractSocket::SocketError socketError) = 0;
+    virtual void sessionOpened() = 0;
+
+private:
+
 };
+
 
 class ServerInterface
 {
@@ -27,20 +41,44 @@ public:
     virtual void someAbstractMethod() = 0;
 };
 
+
 class ThreadInterface
 {
 public:
     virtual ~ThreadInterface() {}
 
-    virtual void someAbstractMethod() = 0;
+    virtual void run() = 0;
 };
+
 
 class CameraInterface
 {
 public:
     virtual ~CameraInterface() {}
 
-    virtual void someAbstractMethod() = 0;
+    virtual void connectToCamera() = 0;
+    virtual void processFrames() = 0;
+
+private:
+    QCamera *camera;
+    QCameraImageCapture *imageCapture;
+};
+
+class PowerInterface
+{
+public:
+    virtual ~PowerInterface() {}
+
+    virtual int voltage() = 0;
+
+public slots:
+    virtual void setVoltage(int volt) = 0;
+
+signals:
+    virtual void voltageChanged(int newVolt) = 0;
+
+private:
+    int voltage;
 };
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +97,6 @@ Q_DECLARE_INTERFACE(CameraInterface, CameraInterface_iid)
 
 #define PowerInterface_iid "SeniorProject.PowerInterface"
 Q_DECLARE_INTERFACE(PowerInterface, PowerInterface_iid)
-
 
 QT_END_NAMESPACE
 

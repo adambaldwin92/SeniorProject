@@ -1,10 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QCameraViewfinder>
-#include <QCameraInfo>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+
+#include <QCameraViewfinder>
+#include <QCameraInfo>
+
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-    connectCamera();
+    camera = new Camera();
+//    camera->connectCamera();
 }
 
 
@@ -23,15 +26,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::connectCamera()
-{
-    camera = new QCamera(QCameraInfo::defaultCamera());
+//void MainWindow::connectCamera()
+//{
 //    camera = new Camera();
 
-    camera->setViewfinder(ui->viewfinder);
 
-    imageCapture = new QCameraImageCapture(camera);
+//    camera->setViewfinder(ui->viewfinder);
 
-    camera->setCaptureMode(QCamera::CaptureStillImage);
-    camera->start();
-}
+//    imageCapture = new QCameraImageCapture(camera);
+
+//    camera->setCaptureMode(QCamera::CaptureStillImage);
+//    camera->start();
+//}
