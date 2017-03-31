@@ -1,5 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    app
+    src \
+    tests \
+    Monitor
 
