@@ -1,34 +1,8 @@
-CONFIG -= qt
-CONFIG += qt
-
-QT  += network core concurrent
-QT  += multimedia multimediawidgets
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-CONFIG += console
+TEMPLATE = app
+CONFIG += console c++11
 CONFIG -= app_bundle
+CONFIG -= qt
 
-TARGET = app
-TEMPLATE = lib
+#TARGET test
 
-DEFINES += SRC_LIBRARY
-
-SOURCES += \
-    power.cpp \
-    thread.cpp \
-    camera.cpp
-
-HEADERS += \
-    src_global.h \
-    power.h \
-    server.h \
-    thread.h \
-    src_global.h \
-    camera.h \
-    client.h \
-    interfaces.h
-
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
-}
+SOURCES += main.cpp

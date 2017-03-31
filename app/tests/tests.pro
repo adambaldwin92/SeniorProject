@@ -1,3 +1,13 @@
-TEMPLATE = subdirs
+include(../gtest_dependency.pri)
 
-SUBDIRS += auto
+TEMPLATE = app
+CONFIG += console c++11
+CONFIG -= app_bundle
+CONFIG  += thread
+CONFIG -= qt
+
+SOURCES += main.cpp
+
+HEADERS += \
+    tst_foo.h
+
