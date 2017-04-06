@@ -11,7 +11,7 @@ QT += widgets
 
 HEADERS +=     tst_foo.h \
     tst_power.h \
-    test.h
+    test_suite.h
 
 SOURCES +=     main.cpp
 
@@ -22,3 +22,6 @@ else:unix: LIBS += -L$$OUT_PWD/../../../src/ -lapp
 
 INCLUDEPATH += $$PWD/../../../src
 DEPENDPATH += $$PWD/../../../src
+
+DISTFILES += \
+    TODO.txt

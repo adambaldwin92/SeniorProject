@@ -14,11 +14,21 @@ TEMPLATE = lib
 DEFINES += SRC_LIBRARY
 
 SOURCES += \
+    service_module.cpp \
+    module.cpp \
+    worker.cpp \
+    global_objects.cpp \
+    camera.cpp \
     power.cpp
 
 HEADERS += \
     src_global.h \
-    interfaces.h
+    service_module.h \
+    module.h \
+    worker.h \
+    global_objects.h \
+    camera.h \
+    power.h
 
 unix {
     target.path = /usr/lib

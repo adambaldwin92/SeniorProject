@@ -8,6 +8,9 @@ CONFIG -= qt
 CONFIG += qt
 
 QT       += core gui multimedia multimediawidgets qml quick
+#these two lines are for debugging with terminal
+QT -= gui
+CONFIG  += console
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
