@@ -1,4 +1,5 @@
-#include "worker.h"
+﻿#include "worker.h"
+
 // global variables
 QWaitCondition camera_notConnected;
 QWaitCondition power_notConnected;
@@ -10,32 +11,33 @@ Worker::Worker(QObject *parent)
       m_camera_connected(false),
       m_power_connected(false)
 {
-    QObject::connect(this,SIGNAL(voltageChanged(int)),this,SLOT(setVoltage(int)));
-    QObject::connect(this,SIGNAL(frameRecieved(int)),this,SLOT(processFrame(int)));
+    // connect work signals->slots
+//    QObject::connect(this, SIGNAL(camera_connected()), this, SLOT()
+    //^^ might not need if using bool flag...
 }
 
 void Worker::connectCamera()
 {
-    qDebug()<<"\nWorker::connectCamera called from: "
+    qDebug()<<"Worker::connectCamera called from: "
            << QThread::currentThreadId();
 
     bool success = true; //should actually be return value of connection attempt
 
     if(success)
     {
-        qDebug()<<" Sucessfully connected to Camera\n";
+        qDebug()<<"Sucessfully connected to Camera\n";
         m_camera_connected = true;
     }
     else // should throw error/exception or wait for connection to establish
     {
-        qDebug()<<"     ERROR: cannot connect to Camera";
+        qDebug()<<"ERROR: cannot connect to Camera";
     }
 
 }
 
 void Worker::connectPower()
 {
-    qDebug()<<"\nWorker::connectPower called from: "
+    qDebug()<<"Worker::connectPower called from: "
            << QThread::currentThreadId();
     // signal bool flag to allow onTimer Process to start reading data
 
@@ -43,12 +45,12 @@ void Worker::connectPower()
 
     if(success)
     {
-        qDebug()<<" Sucessfully connected to Power\n";
+        qDebug()<<"Sucessfully connected to Power\n";
         m_power_connected = true;
     }
     else // should throw error/exception or wait for connection to establish
     {
-        qDebug()<<" ERROR: cannot connect to Power";
+        qDebug()<<"ERROR: cannot connect to Power";
     }
 
 
@@ -56,18 +58,18 @@ void Worker::connectPower()
 
 void Worker::cameraTimerEvent()
 {
-    qDebug()<<"\nWorker::cameraTimerEvent called from: "
+    qDebug()<<"Worker::cameraTimerEvent called from: "
        << QThread::currentThreadId();
 
     if(camera_connected())
     {
-        qDebug()<<" Frame input recieved...";
+        qDebug()<<"Frame input recieved...";
         int frame = 0; // TODO: this is tmp value to represent inputed frame
         emit frameRecieved(frame);
     }
     else
     {
-        qDebug()<<" ERROR: Camera not connected!";
+        qDebug()<<"Camera not connected!";
     }
 
 }
@@ -79,30 +81,30 @@ void Worker::cameraTimerEvent()
  */
 void Worker::powerTimerEvent()
 {
-    qDebug()<<"\nWorker::powerTimerEvent called from: "
+    qDebug()<<"Worker::powerTimerEvent called from: "
        << QThread::currentThreadId();
 
     if(power_connected())
     {
-        qDebug()<<" Read in current voltage input";
+        qDebug()<<"PowerTimerEvent read in current voltage input";
 
         //TODO: replace mock value with actual read() method
         int voltage = m_voltage++;
 
         if(voltage != m_voltage)
         {
-            qDebug()<<" emit voltageChanged";
+            qDebug()<<"emit voltageChanged";
             emit voltageChanged(voltage);
         }
         else
         {
-            qDebug()<<" no change in voltage";
+            qDebug()<<"no change in voltage";
             // do nothing
         }
     }
     else
     {
-        qDebug()<<" Power not connected!";
+        qDebug()<<"Power not connected!";
         // do nothing here
     }
 
@@ -117,31 +119,21 @@ void Worker::powerTimerEvent()
  */
 void Worker::processFrame()
 {
-    qDebug()<<"\nWorker::processFrame called from: "
-       << QThread::currentThreadId();
-
     //TODO: replace trivial conditional with actual CV alg
+
     bool significantDeviation = true;
 
     if(significantDeviation)
     {
-        qDebug()<<" Deviation identified";
+        qDebug()<<"processFrame has identified deviation";
 
         //TODO: replace mock decrement with adjusted value determined by CV results
         m_voltage--;
     }
     else
     {
-        qDebug()<<" No deviation identified";
+        qDebug()<<"no deviation in frames";
     }
 
 }
 
-void Worker::setVoltage(int voltage)
-{
-    qDebug()<<"\nWorker::setVoltage called from: "
-       << QThread::currentThreadId();
-
-    m_voltage = voltage;
-    qDebug()<<" m_voltage = "<<voltage;
-}

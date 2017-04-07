@@ -16,7 +16,7 @@ public:
 
 signals:
     void voltageChanged(int voltage);
-    void frameRecieved(int frame); //change param type from int to img
+    void frameRecieved(int frame); // TODO: change param type to img format
 
 public slots:
     void connectCamera(); //on QThread::started() signal
@@ -27,7 +27,7 @@ public slots:
     void powerTimerEvent(); // on voltageChanged signal
 
     void processFrame();
-    void setVoltage(int voltage);
+
 
 
 private:
@@ -35,8 +35,15 @@ private:
     bool m_power_connected;
 
     int m_voltage;
-    //TODO: add img frame container (look up what opencv suggests)
 
 };
 
 #endif // WORKER_H
+
+
+/*
+ *---NOTES---
+ * 1. may be unecessary to read vltage for our purposes
+ *      1.a. alternatively use valueChanged(int) SIGNAL
+ *              to call setVoltage(int)
+ */
