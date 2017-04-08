@@ -1,6 +1,7 @@
 #ifndef WORKER_H
 #define WORKER_H
 
+
 #include <QObject>
 #include <QtCore>
 
