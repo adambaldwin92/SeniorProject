@@ -56,9 +56,9 @@ void Worker::connectPower()
 
 }
 
-void Worker::cameraTimerEvent()
+void Worker::readFrame()
 {
-    qDebug()<<"Worker::cameraTimerEvent called from: "
+    qDebug()<<"Worker::readFrame called from: "
        << QThread::currentThreadId();
 
     if(camera_connected())
@@ -79,9 +79,11 @@ void Worker::cameraTimerEvent()
  * Worker::changeVoltage may need mutex so
  * voltage value doesnt become corrupt
  */
-void Worker::powerTimerEvent()
+void Worker::readVoltage
+
+()
 {
-    qDebug()<<"Worker::powerTimerEvent called from: "
+    qDebug()<<"Worker::readVoltage called from: "
        << QThread::currentThreadId();
 
     if(power_connected())
@@ -135,5 +137,15 @@ void Worker::processFrame()
         qDebug()<<"no deviation in frames";
     }
 
+}
+
+/* Worker::updateVoltage
+ * Param: int v
+ *  1. should send signal to power source to change its voltage
+ *      to the value of the passed argument 'v'
+ */
+void Worker::updateVoltage(int v)
+{
+    m_voltage = v;
 }
 

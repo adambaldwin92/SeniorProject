@@ -4,6 +4,9 @@
 
 #include <QObject>
 #include <QtCore>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+using namespace cv;
 
 class Worker : public QObject
 {
@@ -24,10 +27,11 @@ public slots:
     void connectPower(); //on QThread::started() signal
 
 
-    void cameraTimerEvent(); // on QTimer::timeout() signal
-    void powerTimerEvent(); // on voltageChanged signal
+    void readFrame(); // on QTimer::timeout() signal
+    void readVoltage(); // on voltageChanged signal
 
     void processFrame();
+    void updateVoltage(int);
 
 
 

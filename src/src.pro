@@ -50,3 +50,6 @@ else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../..
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/gtest.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/gtest.lib
 else:unix: PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/libgtest.a
+
+DISTFILES += \
+    ../../../Pictures/imagespanda.jpg
