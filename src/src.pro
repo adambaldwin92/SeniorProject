@@ -9,15 +9,20 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += \
-    worker.cpp \
     global_objects.cpp \
-    main.cpp
+#    test_main.cpp \
+    main.cpp \
+    camera.cpp \
+    power.cpp
 
 HEADERS += \
-    worker.h \
     global_objects.h \
 #    src_global.h \q
-    worker_test.h
+    camera.h \
+    power.h \
+    camera_test.h \
+    power_test.h
+
 
 unix {
     target.path = /usr/lib
@@ -53,3 +58,24 @@ else:unix: PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/libgtest.a
 
 DISTFILES += \
     ../../../Pictures/imagespanda.jpg
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_core
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_core
+else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_core
+
+INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
+DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_imgcodecs
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_imgcodecs
+else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_imgcodecs
+
+INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
+DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_highgui
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_highgui
+else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_highgui
+
+INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
+DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
