@@ -29,3 +29,14 @@ TEST_F(CameraTest, FrameSuccessfullyRead)
     qDebug()<< "camera.current_frame()";
     ASSERT_EQ(0, camera.readFrame());
 }
+
+TEST_F(CameraTest, ProcessFrameDetectsDeviation)
+{
+
+}
+
+TEST_F(CameraTest, ProcessFrameIgnoresSimilarFrames)
+{
+
+}
+

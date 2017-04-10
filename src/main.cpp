@@ -1,5 +1,7 @@
 #include <QCoreApplication>
+#include <QApplication>
 #include "global_objects.h"
+#include"mainwindow.h"
 
 QTimer timer;
 Camera camera;
@@ -8,7 +10,10 @@ QThread cam_t, pow_t;
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+//    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
     qDebug()<<"(GUI) main control thread: "<< QThread::currentThreadId();
 
     // workerThread.start() will signal-> worker.onStarted()
@@ -20,7 +25,7 @@ int main(int argc, char *argv[])
     QObject::connect(&timer, SIGNAL(timeout()), &power, SLOT(readVoltage()));
 
     // start timer
-    timer.start(31);
+    timer.start(1000); //TODO:change to 33ms
 
     // move worker objects to their own thread
     camera.moveToThread(&cam_t);

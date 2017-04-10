@@ -13,7 +13,8 @@ SOURCES += \
 #    test_main.cpp \
     main.cpp \
     camera.cpp \
-    power.cpp
+    power.cpp \
+    mainwindow.cpp
 
 HEADERS += \
     global_objects.h \
@@ -21,7 +22,8 @@ HEADERS += \
     camera.h \
     power.h \
     camera_test.h \
-    power_test.h
+    power_test.h \
+    mainwindow.h
 
 
 unix {
@@ -79,3 +81,6 @@ else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_highgui
 
 INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
 DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
+
+FORMS += \
+    mainwindow.ui
