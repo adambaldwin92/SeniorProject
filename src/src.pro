@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp \
     camera.cpp \
     power.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    serial.cpp
 
 HEADERS += \
     global_objects.h \
@@ -23,7 +24,8 @@ HEADERS += \
     power.h \
     camera_test.h \
     power_test.h \
-    mainwindow.h
+    mainwindow.h \
+    serial.h
 
 FORMS += \
     mainwindow.ui
