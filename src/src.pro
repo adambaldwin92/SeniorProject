@@ -25,6 +25,9 @@ HEADERS += \
     power_test.h \
     mainwindow.h
 
+FORMS += \
+    mainwindow.ui
+
 
 unix {
     target.path = /usr/lib
@@ -32,55 +35,53 @@ unix {
 }
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/release/ -lgtest_main
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/debug/ -lgtest_main
-else:unix: LIBS += -L$$PWD/../../../../../usr/src/gtest/ -lgtest_main
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/release/ -lgtest_main
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/debug/ -lgtest_main
+#else:unix: LIBS += -L$$PWD/../../../../../usr/src/gtest/ -lgtest_main
 
-INCLUDEPATH += $$PWD/../../../../../usr/src/gtest
-DEPENDPATH += $$PWD/../../../../../usr/src/gtest
+#INCLUDEPATH += $$PWD/../../../../../usr/src/gtest
+#DEPENDPATH += $$PWD/../../../../../usr/src/gtest
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/libgtest_main.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/libgtest_main.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/gtest_main.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/gtest_main.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/libgtest_main.a
+#win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/libgtest_main.a
+#else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/libgtest_main.a
+#else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/gtest_main.lib
+#else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/gtest_main.lib
+#else:unix: PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/libgtest_main.a
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/release/ -lgtest
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/debug/ -lgtest
-else:unix: LIBS += -L$$PWD/../../../../../usr/src/gtest/ -lgtest
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/release/ -lgtest
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/debug/ -lgtest
+#else:unix: LIBS += -L$$PWD/../../../../../usr/src/gtest/ -lgtest
 
-INCLUDEPATH += $$PWD/../../../../../usr/src/gtest
-DEPENDPATH += $$PWD/../../../../../usr/src/gtest
+#INCLUDEPATH += $$PWD/../../../../../usr/src/gtest
+#DEPENDPATH += $$PWD/../../../../../usr/src/gtest
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/libgtest.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/libgtest.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/gtest.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/gtest.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/libgtest.a
+#win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/libgtest.a
+#else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/libgtest.a
+#else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/release/gtest.lib
+#else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/debug/gtest.lib
+#else:unix: PRE_TARGETDEPS += $$PWD/../../../../../usr/src/gtest/libgtest.a
 
-DISTFILES += \
-    ../../../Pictures/imagespanda.jpg
+#DISTFILES += \
+#    ../../../Pictures/imagespanda.jpg
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_core
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_core
-else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_core
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_core
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_core
+#else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_core
 
-INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
-DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
+#INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
+#DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_imgcodecs
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_imgcodecs
-else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_imgcodecs
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_imgcodecs
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_imgcodecs
+#else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_imgcodecs
 
-INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
-DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
+#INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
+#DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_highgui
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_highgui
-else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_highgui
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/release/ -lopencv_highgui
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../Programs/opencv/build/lib/debug/ -lopencv_highgui
+#else:unix: LIBS += -L$$PWD/../../../Programs/opencv/build/lib/ -lopencv_highgui
 
-INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
-DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
+#INCLUDEPATH += $$PWD/../../../Programs/opencv/build/include
+#DEPENDPATH += $$PWD/../../../Programs/opencv/build/include
 
-FORMS += \
-    mainwindow.ui
