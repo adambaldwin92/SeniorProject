@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 #include "Serial.h"
+#include <stdio.h>
+using namespace std;
 
 CSerial::CSerial()
 {
@@ -20,17 +22,31 @@ CSerial::~CSerial()
 
 }
 
+//LPWSTR CSerial::convertCharArrToLPWSTR(char* c)
+//{
+//    int i = sizeof(c);
+//    wchar_t w[i];
+//    mbstowcs(w, c, strlen(c)+1);
+//    LPWSTR p = w;
+
+//    return p;
+//}
+
 BOOL CSerial::Open( int nPort, int nBaud )
 {
 
     if( m_bOpened ) return( TRUE );
 
+    wchar_t w_szPort[15];
+//    wchar_t w_szComParams[50];
     char szPort[15];
     char szComParams[50];
+//    LPWSTR w_szPort = convertCharArrToLPWSTR(szPort);
     DCB dcb;
 
-    wsprintf( szPort, "COM%d", nPort );
-    m_hIDComDev = CreateFile( szPort, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, NULL );
+//    wsprintf( p_szPort, "COM%d", nPort );
+    sprintf( szPort,"COM%d", nPort );
+    m_hIDComDev = CreateFile( w_szPort, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, NULL );
     if( m_hIDComDev == NULL ) return( FALSE );
 
     memset( &m_OverlappedRead, 0, sizeof( OVERLAPPED ) );
@@ -44,7 +60,7 @@ BOOL CSerial::Open( int nPort, int nBaud )
     CommTimeOuts.WriteTotalTimeoutConstant = 5000;
     SetCommTimeouts( m_hIDComDev, &CommTimeOuts );
 
-    wsprintf( szComParams, "COM%d:%d,n,8,1", nPort, nBaud );
+    sprintf( szComParams, "COM%d:%d,n,8,1", nPort, nBaud );
 
     m_OverlappedRead.hEvent = CreateEvent( NULL, TRUE, FALSE, NULL );
     m_OverlappedWrite.hEvent = CreateEvent( NULL, TRUE, FALSE, NULL );

@@ -13,6 +13,8 @@
 #define ASCII_XON       0x11
 #define ASCII_XOFF      0x13
 
+#include "Windows.h"
+
 class CSerial
 {
 
@@ -28,6 +30,8 @@ public:
     int ReadDataWaiting( void );
 
     BOOL IsOpened( void ){ return( m_bOpened ); }
+
+    LPWSTR convertCharArrToLPWSTR(char* c);
 
 protected:
     BOOL WriteCommByte( unsigned char );

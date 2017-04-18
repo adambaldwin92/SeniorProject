@@ -2,6 +2,8 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
+CONFIG += stdafx.h
+PRECOMPILED_HEADER =
 
 TARGET = src
 CONFIG -= app_bundle
@@ -15,6 +17,7 @@ SOURCES += \
     camera.cpp \
     power.cpp \
     mainwindow.cpp \
+    pump.cpp \
     serial.cpp
 
 HEADERS += \
@@ -25,7 +28,9 @@ HEADERS += \
     camera_test.h \
     power_test.h \
     mainwindow.h \
-    serial.h
+    pump.h \
+    serial.h \
+    stdafx.h
 
 FORMS += \
     mainwindow.ui
