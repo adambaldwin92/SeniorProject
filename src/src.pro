@@ -41,6 +41,23 @@ unix {
     INSTALLS += target
 }
 
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Programs/googletest-master/googletest/msvc/gtest/release/ -lgtestd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Programs/googletest-master/googletest/msvc/gtest/debug/ -lgtestd
+else:unix: LIBS += -L$$PWD/../../../../../Programs/googletest-master/googletest/msvc/gtest/ -lgtestd
+
+INCLUDEPATH += $$PWD/../../../../../Programs/googletest-master/googletest/include/gtest
+DEPENDPATH += $$PWD/../../../../../Programs/googletest-master/googletest/include/gtest
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Programs/googletest-master/googlemock/msvc/2015/release/ -lgmock
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Programs/googletest-master/googlemock/msvc/2015/debug/ -lgmock
+else:unix: LIBS += -L$$PWD/../../../../../Programs/googletest-master/googlemock/msvc/2015/ -lgmock
+
+INCLUDEPATH += $$PWD/../../../../../Programs/googletest-master/googlemock/include/gmock
+DEPENDPATH += $$PWD/../../../../../Programs/googletest-master/googlemock/include/gmock
+
+#-----------------------------------------------------------------------------------------------------------------------------------------
+#----old includes for gtest with unix system----------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------------------------
 
 #win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/release/ -lgtest_main
 #else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/src/gtest/debug/ -lgtest_main

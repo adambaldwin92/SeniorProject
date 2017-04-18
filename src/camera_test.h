@@ -1,5 +1,6 @@
-//#include "camera.h"
-//#include"gtest/gtest.h"
+#include "camera.h"
+#include <gtest.h>
+#include <gmock.h>
 //#include"opencv2/core.hpp"
 
 //class CameraTest : public ::testing::Test {
