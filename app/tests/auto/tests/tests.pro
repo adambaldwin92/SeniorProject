@@ -23,7 +23,8 @@ HEADERS += \
     mainwindow.h \
     pump.h \
     serial.h \
-    stdafx.h
+    stdafx.h \
+    rs232.h
 
 SOURCES +=    \
     main.cpp \
@@ -34,7 +35,8 @@ SOURCES +=    \
     power.cpp \
     mainwindow.cpp \
     pump.cpp \
-    serial.cpp
+    serial.cpp \
+    rs232.c
 
 FORMS += \
     mainwindow.ui
