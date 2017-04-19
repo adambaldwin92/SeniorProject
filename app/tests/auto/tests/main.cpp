@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
     cam_t.start();
     pow_t.start();
 
-//    Pump pump;
-//    pump.connectPump();
+    Pump pump;
+    pump.connectPump();
 
 
     return a.exec();
