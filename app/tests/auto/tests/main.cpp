@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 //    QCoreApplication a(argc, argv);
     QApplication a(argc, argv);
     MainWindow w;
-    w.show();
+//    w.show();
     qDebug()<<"(GUI) main control thread: "<< QThread::currentThreadId();
 
     // workerThread.start() will signal-> worker.onStarted()
@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
     power.moveToThread(&pow_t);
 
     // start the worker threads
-    cam_t.start();
-    pow_t.start();
+//    cam_t.start();
+//    pow_t.start();
 
     Pump pump;
     pump.connectPump();
