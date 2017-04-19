@@ -1,6 +1,9 @@
 TEMPLATE = subdirs
 
+QMAKE_CXXFLAGS_DEBUG += /MTd
+QMAKE_CXXFLAGS_RELEASE += /MT
+
 SUBDIRS += \
-    src \
+    app
 
 

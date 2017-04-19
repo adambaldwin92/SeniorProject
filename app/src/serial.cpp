@@ -77,7 +77,7 @@ BOOL CSerial::Open( int nPort, int nBaud )
         !SetupComm( m_hIDComDev, 10000, 10000 ) ||
         m_OverlappedRead.hEvent == NULL ||
         m_OverlappedWrite.hEvent == NULL ){
-        DWORD dwError = GetLastError();
+//        DWORD dwError = GetLastError();
         if( m_OverlappedRead.hEvent != NULL ) CloseHandle( m_OverlappedRead.hEvent );
         if( m_OverlappedWrite.hEvent != NULL ) CloseHandle( m_OverlappedWrite.hEvent );
         CloseHandle( m_hIDComDev );
