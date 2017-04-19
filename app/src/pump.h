@@ -1,6 +1,7 @@
 #ifndef PUMP_H
 #define PUMP_H
 
+
 #include "serial.h"
 #ifdef _WIN32
 #include <Windows.h>
@@ -12,10 +13,11 @@ class Pump
 {
 public:
     Pump();
+    ~Pump();
     void connectPump();
 
 private:
-    CSerial serial;
+//    CSerial serial;
 //    int i, n,
 //        cport_nr = 3,   /* /dev/ttyS? (COM4 on windows) */
 //        bdrate = 9600;  /* 9600 baud */

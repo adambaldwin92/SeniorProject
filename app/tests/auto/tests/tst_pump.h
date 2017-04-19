@@ -1,10 +1,6 @@
-#include <gtest/gtest.h>
-#include <gmock/gmock-matchers.h>
+#ifndef TST_PUMP_H
+#define TST_PUMP_H
 
-using namespace testing;
 
-TEST(tests, tests)
-{
-    EXPECT_EQ(1, 1);
-    ASSERT_THAT(0, Eq(0));
-}
+
+#endif // TST_PUMP_H

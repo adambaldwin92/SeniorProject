@@ -1,4 +1,7 @@
-#include "tst_tests.h"
+#include "mock_pump.h"
+
+#include"tst_foo.h"
+
 
 #include <gtest/gtest.h>
 

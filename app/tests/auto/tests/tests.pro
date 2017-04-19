@@ -8,8 +8,14 @@ CONFIG += thread
 CONFIG -= qt
 
 HEADERS += \    
+    mock_foo.h \
+    mock_camera.h \
+    mock_pump.h \
     tst_pump.h \
-    tst_power.h \
-    tst_camera.h
+    tst_foo.h
 
-SOURCES +=     main.cpp
+SOURCES +=    \
+     main.cpp
+    tst_pump.cpp
+
+
