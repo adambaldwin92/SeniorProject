@@ -12,10 +12,12 @@ HEADERS += \
     mock_camera.h \
     mock_pump.h \
     tst_pump.h \
-    tst_foo.h
+    tst_foo.h \
+    pump.h
 
 SOURCES +=    \
-     main.cpp
+     main.cpp \
+    pump.cpp
     tst_pump.cpp
 
 

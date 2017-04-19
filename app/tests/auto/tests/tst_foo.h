@@ -3,9 +3,21 @@
 
 #include"mock_foo.h"
 
+// The fixture for testing class Foo.
+class FooTest : public ::testing::Test {
+ protected:
+    FooTest() {}
+    virtual ~FooTest() {}
+    virtual void SetUp() {}
+    virtual void TearDown() {}
+
+  // Objects declared here can be used by all tests in the test case for Foo.
+
+};
+
 // Tests that the Foo::bar() method returns 0.
 TEST_F(FooTest, MethodBarReturnsZero) {
-    MyFoo f;
+    Foo f;
     EXPECT_EQ(0, f.bar());
 }
 
