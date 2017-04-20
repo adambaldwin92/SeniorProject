@@ -3,8 +3,5 @@
 namespace
 {
     QTimer timer;
-    QMutex mutex;
-    Camera camera;
-    Power power;
-    QThread cam_t, pow_t;
+    QThread cam_t, pow_t, pump_t;
 }

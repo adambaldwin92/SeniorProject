@@ -1,29 +1,24 @@
 #ifndef PUMP_H
 #define PUMP_H
 
-
-//#include "serial.h"
-#ifdef _WIN32
 #include <Windows.h>
-#else
-#include <unistd.h>
-#endif
-#include <stdio.h>
-#include<atlstr.h>
-#include "rs232.h"
-using namespace std;
+#include "interfaces.h"
 
-
-class Pump
+class Pump : public iPump
 {
 public:
     Pump();
-    ~Pump();
-    int connectPump();
+    bool connected() const{ return m_connected; }
+    double flowrate() const { return m_flowrate; }
 
+    int connectPump();
+    int startPump();
+    int stopPump();
+    int setRate(double flowrate);
 
 private:
-
+    bool m_connected;
+    double m_flowrate;
 
 };
 #endif // PUMP_H

@@ -2,6 +2,7 @@
 #define TST_PUMP_H
 
 #include"pump.h"
+#include "mocks.h"
 
 // The fixture for testing class Foo.
 class PumpTest : public ::testing::Test {

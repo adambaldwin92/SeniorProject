@@ -12,8 +12,6 @@ CONFIG += qt
 
 HEADERS += \    
     mock_foo.h \
-    mock_camera.h \
-    mock_pump.h \
     tst_pump.h \
     tst_foo.h \
     pump.h \
@@ -22,9 +20,8 @@ HEADERS += \
     power.h \
     mainwindow.h \
     pump.h \
-    serial.h \
-    stdafx.h \
-    rs232.h
+    interfaces.h \
+    mocks.h
 
 SOURCES +=    \
     main.cpp \
@@ -34,9 +31,7 @@ SOURCES +=    \
     camera.cpp \
     power.cpp \
     mainwindow.cpp \
-    pump.cpp \
-    serial.cpp \
-    rs232.c
+    pump.cpp
 
 FORMS += \
     mainwindow.ui
