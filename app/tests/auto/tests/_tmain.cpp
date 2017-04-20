@@ -1,7 +1,7 @@
-#include "mock_pump.h"
 #include "tst_pump.h"
-
-#include"tst_foo.h"
+#include"tst_camera.h"
+#include "tst_power.h"
+//#include"tst_foo.h"
 
 
 #include <gtest/gtest.h>

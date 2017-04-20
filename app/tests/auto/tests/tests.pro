@@ -21,11 +21,13 @@ HEADERS += \
     mainwindow.h \
     pump.h \
     interfaces.h \
-    mocks.h
+    mocks.h \
+    tst_camera.h \
+    tst_power.h
 
 SOURCES +=    \
-    main.cpp \
-#    _tmain.cpp \
+#    main.cpp \
+    _tmain.cpp \
     pump.cpp \
     global_objects.cpp \
     camera.cpp \
