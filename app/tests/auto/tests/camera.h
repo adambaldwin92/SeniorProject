@@ -62,9 +62,18 @@ public:
 private slots:
     void setCamera(const QCameraInfo &cameraInfo);
 
+    void startCamera();
+    void stopCamera();
+
     void updateCameraDevice(QAction *action);
 
     void displayViewfinder();
+
+
+protected:
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::Camera *ui;
@@ -72,6 +81,13 @@ private:
     QCamera *camera;
     QCameraImageCapture *imageCapture;
     QMediaRecorder* mediaRecorder;
+
+    QImageEncoderSettings imageSettings;
+    QAudioEncoderSettings audioSettings;
+    QVideoEncoderSettings videoSettings;
+    QString videoContainerFormat;
+    bool isCapturingImage;
+    bool applicationExiting;
 };
 
 #endif

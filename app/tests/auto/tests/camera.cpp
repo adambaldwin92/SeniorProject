@@ -59,7 +59,9 @@ Camera::Camera(QWidget *parent) :
     ui(new Ui::Camera),
     camera(0),
     imageCapture(0),
-    mediaRecorder(0)
+    mediaRecorder(0),
+    isCapturingImage(false),
+    applicationExiting(false)
 {
     ui->setupUi(this);
 
@@ -126,6 +128,52 @@ void Camera::setCamera(const QCameraInfo &cameraInfo)
     camera->start();
 }
 
+void Camera::keyPressEvent(QKeyEvent * event)
+{
+    if (event->isAutoRepeat())
+        return;
+
+    switch (event->key()) {
+    case Qt::Key_CameraFocus:
+        displayViewfinder();
+        camera->searchAndLock();
+        event->accept();
+        break;
+    case Qt::Key_Camera:
+        event->accept();
+        break;
+    default:
+        QMainWindow::keyPressEvent(event);
+    }
+}
+
+void Camera::keyReleaseEvent(QKeyEvent *event)
+{
+    if (event->isAutoRepeat())
+        return;
+
+    switch (event->key()) {
+    case Qt::Key_CameraFocus:
+        camera->unlock();
+        break;
+    default:
+        QMainWindow::keyReleaseEvent(event);
+    }
+}
+
+
+void Camera::startCamera()
+{
+    camera->start();
+}
+
+void Camera::stopCamera()
+{
+    camera->stop();
+}
+
+
+
 void Camera::updateCameraDevice(QAction *action)
 {
     setCamera(qvariant_cast<QCameraInfo>(action->data()));
@@ -136,3 +184,16 @@ void Camera::displayViewfinder()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+
+
+void Camera::closeEvent(QCloseEvent *event)
+{
+    if (isCapturingImage) {
+        setEnabled(false);
+        applicationExiting = true;
+        event->ignore();
+    } else {
+        event->accept();
+    }
+
+}
