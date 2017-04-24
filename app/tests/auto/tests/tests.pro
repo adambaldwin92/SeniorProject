@@ -1,7 +1,7 @@
 
 include(../gtest_dependency.pri)
 
-QT       += core gui
+QT       += core gui multimedia multimediawidgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TEMPLATE = app
@@ -26,8 +26,8 @@ HEADERS += \
     tst_power.h
 
 SOURCES +=    \
-#    main.cpp \
-    _tmain.cpp \
+    main.cpp \
+#    _tmain.cpp \
     pump.cpp \
     global_objects.cpp \
     camera.cpp \
@@ -36,4 +36,5 @@ SOURCES +=    \
     pump.cpp
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    camera.ui
