@@ -16,7 +16,6 @@ HEADERS += \
     tst_foo.h \
     pump.h \
     global_objects.h \
-    camera.h \
     power.h \
     mainwindow.h \
     pump.h \
@@ -30,11 +29,18 @@ SOURCES +=    \
 #    _tmain.cpp \
     pump.cpp \
     global_objects.cpp \
-    camera.cpp \
     power.cpp \
     mainwindow.cpp \
     pump.cpp
 
 FORMS += \
-    camera.ui \
     mainwindow.ui
+
+DISTFILES += \
+    start.txt
+
+
+unix|win32: LIBS += -L$$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Lib/' -luc480_64
+
+INCLUDEPATH += $$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Include'
+DEPENDPATH += $$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Include'

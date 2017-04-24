@@ -12,6 +12,8 @@
 
 #include <QtWidgets>
 
+#include"uc480.h"
+
 Q_DECLARE_METATYPE(QCameraInfo)
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,6 +25,11 @@ MainWindow::MainWindow(QWidget *parent) :
     isCapturingImage(false),
     applicationExiting(false)
 {
+
+        int* pnNumCams;
+       int n = is_GetNumberOfCameras(pnNumCams);
+        qDebug() << "number of cameras: " << n ;
+
     ui->setupUi(this);
 
     //Camera devices:
@@ -42,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(videoDevicesGroup, SIGNAL(triggered(QAction*)), SLOT(updateCameraDevice(QAction*)));
 
     setCamera(QCameraInfo::defaultCamera());
+
+
 }
 
 MainWindow::~MainWindow()
@@ -59,31 +68,13 @@ void MainWindow::setCamera(const QCameraInfo &cameraInfo)
 
     camera = new QCamera(cameraInfo);
 
-    connect(camera, SIGNAL(stateChanged(QCamera::State)), this, SLOT(updateCameraState(QCamera::State)));
-    connect(camera, SIGNAL(error(QCamera::Error)), this, SLOT(displayCameraError()));
 
     mediaRecorder = new QMediaRecorder(camera);
-    connect(mediaRecorder, SIGNAL(stateChanged(QMediaRecorder::State)), this, SLOT(updateRecorderState(QMediaRecorder::State)));
-
     imageCapture = new QCameraImageCapture(camera);
-
-    connect(mediaRecorder, SIGNAL(durationChanged(qint64)), this, SLOT(updateRecordTime()));
-    connect(mediaRecorder, SIGNAL(error(QMediaRecorder::Error)), this, SLOT(displayRecorderError()));
 
     mediaRecorder->setMetaData(QMediaMetaData::Title, QVariant(QLatin1String("Test Title")));
 
-
-
     camera->setViewfinder(ui->viewfinder);
-
-    connect(imageCapture, SIGNAL(readyForCaptureChanged(bool)), this, SLOT(readyForCapture(bool)));
-    connect(imageCapture, SIGNAL(imageCaptured(int,QImage)), this, SLOT(processCapturedImage(int,QImage)));
-    connect(imageCapture, SIGNAL(imageSaved(int,QString)), this, SLOT(imageSaved(int,QString)));
-    connect(imageCapture, SIGNAL(error(int,QCameraImageCapture::Error,QString)), this,
-            SLOT(displayCaptureError(int,QCameraImageCapture::Error,QString)));
-
-    connect(camera, SIGNAL(lockStatusChanged(QCamera::LockStatus,QCamera::LockChangeReason)),
-            this, SLOT(updateLockStatus(QCamera::LockStatus,QCamera::LockChangeReason)));
 
     camera->start();
 }

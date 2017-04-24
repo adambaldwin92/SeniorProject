@@ -5,12 +5,11 @@ Pump::Pump()
     : m_connected(false),
       m_flowrate(0)
 {
-
 }
 
 int Pump::connectPump()
 {
-    system("\"C:\\Program Files\\PuTTY\\putty.exe\" -serial com4");
+    system("\"C:\\Program Files\\PuTTY\\putty.exe\" -serial com4 -m start.txt");
 
     return 0;
 }
