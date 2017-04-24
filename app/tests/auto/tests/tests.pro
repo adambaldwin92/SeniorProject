@@ -36,5 +36,5 @@ SOURCES +=    \
     pump.cpp
 
 FORMS += \
-    mainwindow.ui \
-    camera.ui
+    camera.ui \
+    mainwindow.ui

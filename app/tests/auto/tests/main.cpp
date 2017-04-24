@@ -13,9 +13,8 @@ int main(int argc, char *argv[])
 {
 //    QCoreApplication a(argc, argv);
     QApplication a(argc, argv);
-//    MainWindow w;
-    Camera cam;
-    cam.show();
+    MainWindow w;
+    w.show();
 //    qDebug()<<"(GUI) main control thread: "<< QThread::currentThreadId();
 
 //    Camera* camera = new Camera();
