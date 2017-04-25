@@ -2,7 +2,7 @@
 #define MOCKS_H
 
 #include"interfaces.h"
-#include"gmock/gmock.h"
+#include<gmock/gmock.h>
 
 class MockPump : public iPump {
  public:

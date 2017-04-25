@@ -12,7 +12,7 @@
 
 #include <QtWidgets>
 
-#include"uc480.h"
+//#include"uc480.h"
 
 Q_DECLARE_METATYPE(QCameraInfo)
 
@@ -26,9 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
     applicationExiting(false)
 {
 
-        int* pnNumCams;
-       int n = is_GetNumberOfCameras(pnNumCams);
-        qDebug() << "number of cameras: " << n ;
+//        int* pnNumCams;
+//       int n = is_GetNumberOfCameras(pnNumCams);
+//        qDebug() << "number of cameras: " << n ;
 
     ui->setupUi(this);
 

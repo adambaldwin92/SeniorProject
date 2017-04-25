@@ -1,8 +1,9 @@
+#include "pump.h"
 #include <QCoreApplication>
 #include <QApplication>
 #include "global_objects.h"
 #include"mainwindow.h"
-#include "pump.h"
+
 #include"power.h"
 
 QTimer timer;

@@ -1,7 +1,7 @@
 #ifndef MOCK_FOO_H
 #define MOCK_FOO_H
 
-#include "gmock/gmock.h"
+#include <gmock/gmock.h>
 
 using namespace testing;
 

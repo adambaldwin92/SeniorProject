@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include"uc480.h"
+//#include"uc480.h"
 //#include"uc480_tools.h"
 //#include"uc480CaptureInterface.h"
 #include<QDebug>

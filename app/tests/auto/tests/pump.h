@@ -1,8 +1,12 @@
 #ifndef PUMP_H
 #define PUMP_H
 
-#include <Windows.h>
 #include "interfaces.h"
+#include<qprocess.h>
+
+//using namespace boost::process;
+
+//namespace bp =  ::boost::process;
 
 class Pump : public iPump
 {
@@ -19,6 +23,8 @@ public:
 private:
     bool m_connected;
     double m_flowrate;
-
+    QString program = "C:\\Program Files\\PuTTY\\putty.exe";
+    QStringList arguments;
+    QProcess *myProcess;
 };
 #endif // PUMP_H

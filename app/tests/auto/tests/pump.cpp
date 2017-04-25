@@ -1,5 +1,6 @@
+
 #include "pump.h"
-#include "qdebug.h"
+#include <qdebug.h>
 
 Pump::Pump()
     : m_connected(false),
@@ -9,7 +10,15 @@ Pump::Pump()
 
 int Pump::connectPump()
 {
-    system("\"C:\\Program Files\\PuTTY\\putty.exe\" -serial com4 -m start.txt");
+// <--check out "plink" in PuTTY--->
+    qDebug() << "connectPump called...";
+    arguments << "-serial" << "com4";
+    myProcess = new QProcess(this);
+    myProcess->start(program, arguments);
+
+//    system(WshShell.Run( "putty.exe"));
+
+//    system("\"C:\\Program Files\\PuTTY\\putty.exe\" -serial com4 -m "+startCmd);
 
     return 0;
 }

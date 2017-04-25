@@ -37,10 +37,16 @@ FORMS += \
     mainwindow.ui
 
 DISTFILES += \
-    start.txt
+    start.cmd
+
+
+#INCLUDEPATH += $$PWD/'../../../../../../../../Program Files/Boost/include'
+#DEPENDPATH += $$PWD/'../../../../../../../../Program Files/Boost/include'
 
 
 unix|win32: LIBS += -L$$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Lib/' -luc480_64
 
 INCLUDEPATH += $$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Include'
 DEPENDPATH += $$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Include'
+
+
