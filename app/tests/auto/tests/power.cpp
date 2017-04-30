@@ -1,15 +1,16 @@
 #include "power.h"
 
-Power::Power(QObject *parent)
-    : QObject(parent),
-      m_power_connected(false)
+//Power::Power(iPower *parent)
+//    : iPower(parent),
+//      m_power_connected(false)
+//{
+//}
+Power::Power()
+    : m_power_connected(false)
 {
-    // connect work signals->slots
-//    QObject::connect(this, SIGNAL(camera_connected()), this, SLOT()
-    //^^ might not need if using bool flag...
 }
 
-void Power::connectPower()
+int Power::connectPower()
 {
     qDebug()<<"Power::connectPower called from: "
            << QThread::currentThreadId();
@@ -21,16 +22,18 @@ void Power::connectPower()
     {
         qDebug()<<"Sucessfully connected to Power\n";
         m_power_connected = true;
+        return 0;
     }
     else // should throw error/exception or wait for connection to establish
     {
         qDebug()<<"ERROR: cannot connect to Power";
+        return -1;
     }
 
 }
 
 
-void Power::readVoltage()
+int Power::readVoltage()
 {
     qDebug()<<"Power::readVoltage called from: "
        << QThread::currentThreadId();
@@ -38,10 +41,12 @@ void Power::readVoltage()
     {
         int voltage = 3;
         m_voltage = voltage;
+        return 0;
     }
     else
     {
         qDebug()<<"Power source disconnected..";
+        return -1;
     }
 
 }
@@ -50,7 +55,7 @@ void Power::readVoltage()
  * Power::changeVoltage may need mutex so
  * voltage value doesnt become corrupt
  */
-void Power::updatePower(int voltage)
+int Power::writeVoltage(double voltage)
 {
     qDebug()<<"Power::changeVoltage called from: "
        << QThread::currentThreadId();
@@ -64,18 +69,21 @@ void Power::updatePower(int voltage)
         if(voltage != m_voltage)
         {
             qDebug()<<"emit voltageChanged";
-            emit voltageChanged(voltage);
+            // TODO: write new voltage to labjack
+            return 0;
         }
         else
         {
             qDebug()<<"no change in voltage";
             // do nothing
+            return 0;
         }
     }
     else
     {
         qDebug()<<"Power not connected!";
         // do nothing here
+        return -1;
     }
 
 }
