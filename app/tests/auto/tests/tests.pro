@@ -22,7 +22,8 @@ HEADERS += \
     interfaces.h \
     mocks.h \
     tst_camera.h \
-    tst_power.h
+    tst_power.h \
+    camera.h
 
 SOURCES +=    \
     main.cpp \
@@ -31,7 +32,8 @@ SOURCES +=    \
     global_objects.cpp \
     power.cpp \
     mainwindow.cpp \
-    pump.cpp
+    pump.cpp \
+    camera.cpp
 
 FORMS += \
     mainwindow.ui
@@ -40,11 +42,8 @@ DISTFILES += \
     start.cmd
 
 
-#INCLUDEPATH += $$PWD/'../../../../../../../../Program Files/Boost/include'
-#DEPENDPATH += $$PWD/'../../../../../../../../Program Files/Boost/include'
-
-
 unix|win32: LIBS += -L$$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Lib/' -luc480_64
+unix|win32: LIBS += -L$$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Lib/' -luc480_tools_64
 
 INCLUDEPATH += $$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Include'
 DEPENDPATH += $$PWD/'../../../../../../../../Program Files/Thorlabs/Scientific Imaging/DCx Camera Support/Develop/Include'

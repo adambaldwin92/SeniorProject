@@ -4,6 +4,8 @@
 #include "global_objects.h"
 #include"mainwindow.h"
 
+#include"camera.h"
+
 #include"power.h"
 
 QTimer timer;
@@ -41,6 +43,8 @@ int main(int argc, char *argv[])
 //    pow_t.start();
 //    cam_t.start();
     pump_t.start();
+
+    Camera cam;
 
     return a.exec();
 }
