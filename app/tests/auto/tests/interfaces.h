@@ -1,6 +1,7 @@
 #ifndef INTERFACES_H
 #define INTERFACES_H
 
+
 #include <QObject>
 #include<QDebug>
 #include<QThread>

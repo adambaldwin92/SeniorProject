@@ -2,12 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+//#include"uc480.h"
+//#include"uc480_tools.h"
+//#include"uc480CaptureInterface.h"
+#include<QDebug>
 
 #include <QCamera>
 #include <QCameraImageCapture>
 #include <QMediaRecorder>
 
-#include <QMainWindow>
+#include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

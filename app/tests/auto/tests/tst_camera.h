@@ -1,7 +1,6 @@
 #ifndef TST_CAMERA_H
 #define TST_CAMERA_H
 
-#include"camera.h"
 #include "mocks.h"
 using namespace testing;
 
